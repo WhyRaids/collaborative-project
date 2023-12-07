@@ -1,19 +1,280 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable type="KIND_SpriteKind" id=",2j/aL5,,xn:UUpfIJmw">Player</variable><variable type="KIND_SpriteKind" id=".,pN8JDXz+kNJ1]gg^uk">Projectile</variable><variable type="KIND_SpriteKind" id="Q/vaa_uBWxcnh=D$nx@*">Food</variable><variable type="KIND_SpriteKind" id="Z/^G%i*=f[y3%#[x;A=P">Enemy</variable><variable id="$GKT_nLMb0M(I7uh3bzy">spaceship</variable><variable id="_.YV:VRH1dl_j|*x.*r7">mySprite</variable></variables><block type="pxt-on-start" id="v^`FX!Z.l!t-{I_XPdE)" x="0" y="0"></block><block type="function_definition" id="ajPL4RCS*/D`ti[xP9A?" x="510" y="150"><mutation name="useSpaceship" functionid="/KSQ5VuJ!ge~=fjEB{:1"></mutation><field name="function_name">useSpaceship</field><statement name="STACK"><block type="variables_set" id="p#P0sRDkH=4E;Nhe|blN"><field name="VAR" id="$GKT_nLMb0M(I7uh3bzy">spaceship</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="GG[tnnsdb$E$n07(0)y7"><value name="img"><shadow type="screen_image_picker" id="q{r.#q1};yj@c@b;B]T5"><field name="img">img`
-. . . . f f f f f f f f f . . . . 
-. . . f a a a a a a a a a f . . . 
-. . f a a a a a a a a a a a f . . 
-. f f a a a a a a a a a a a f f . 
-f 8 8 f a a a a a a a a a f 8 8 f 
-f 8 8 8 f a a a a a a a f 8 8 8 f 
-f 8 8 8 8 f f f f f f f 8 8 8 8 f 
-f 8 8 8 8 8 8 8 2 8 8 8 8 8 8 8 f 
-f 8 8 8 8 8 8 b c b 8 8 8 8 8 8 f 
-f 8 8 8 8 8 b b c b b 8 8 8 8 8 f 
-f 8 8 8 8 8 b c c c b 8 8 8 8 8 f 
-f 8 8 8 8 8 b b c b b 8 8 8 8 8 f 
-f 8 8 8 8 8 8 b b b 8 8 8 8 8 8 f 
-. f 8 8 8 8 8 8 8 8 8 8 8 8 8 f . 
-. . f 8 8 8 8 8 8 8 8 8 8 8 f . . 
-. . . f 8 8 8 8 8 8 8 8 8 f . . . 
-. . . . f f f f f f f f f . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":"q{r.#q1};yj@c@b;B]T5"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id=":A^k0RGz!9XnCnI!kfp["><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="game_control_sprite" id="9.rQjjog:7/EPidS|nV}"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id="|lFHZ@^/K?B{|{Ng{3!}"><field name="VAR" id="$GKT_nLMb0M(I7uh3bzy">spaceship</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="mrO+cvoysuq@4N-}l$[)"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="NwwI=]fy~(=K$90wFFK}"><field name="speed">100</field></shadow></value></block></next></block></statement></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable type="KIND_SpriteKind" id=",2j/aL5,,xn:UUpfIJmw">Player</variable><variable type="KIND_SpriteKind" id=".,pN8JDXz+kNJ1]gg^uk">Projectile</variable><variable type="KIND_SpriteKind" id="Q/vaa_uBWxcnh=D$nx@*">Food</variable><variable type="KIND_SpriteKind" id="Z/^G%i*=f[y3%#[x;A=P">Enemy</variable><variable type="KIND_SpriteKind" id="L)Hasv.)#EA9fU%I}}7z">turret</variable><variable id="$GKT_nLMb0M(I7uh3bzy">turretUp</variable><variable id="_.YV:VRH1dl_j|*x.*r7">mySprite</variable><variable id="q9-~WCU1z-zOM!(/[@68">turretLeft</variable><variable id="*nD~z6$;q4.AvyZG0S2a">turretRight</variable><variable id=".]/Y7!jgH|XDIa:E*(lC">turretDown</variable><variable id="g6~5+Fin4v`%W!o.%SA`">turretBulletUp</variable><variable id="Y?BupoLKULyX%nmoF6ro">turretBulletLeft</variable><variable id="S0HmVo9(5;1dVL8hA^r_">turretBulletRight</variable><variable id="NxP_3!$XiNCCE2,;-!i2">turretBulletDown</variable></variables><block type="function_definition" id="ajPL4RCS*/D`ti[xP9A?" x="950" y="-210"><mutation name="turretDirection" functionid="/KSQ5VuJ!ge~=fjEB{:1"></mutation><field name="function_name">turretDirection</field><statement name="STACK"><block type="controls_if" id="~q[%fmGR/}.83N=oDD6c"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="G]J7qpmXoCob-)36%!b$"><field name="button">controller.up</field></block></value><statement name="DO0"><block type="sprites_destroy_all_sprites_of_kind" id="}ZKCm|Vne]sO/*w%iduh"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.spray</field><value name="kind"><shadow type="spritekind" id="N}r_5+22FU=eegdRsrQ@"><field name="MEMBER">turret</field></shadow></value><value name="duration"><shadow type="timePicker" id="{}KVEJ1aHHhdW_*#UK%!"><field name="ms">500</field></shadow></value><next><block type="variables_set" id="$ZFc2KcKFbGh9ywB/^x^"><field name="VAR" id="$GKT_nLMb0M(I7uh3bzy">turretUp</field><value name="VALUE"><shadow type="math_number" id="f0VNveHRmur`W4Tfc-gp"><field name="NUM">0</field></shadow><block type="spritescreate" id="!!//_Bha-!{RfN%c#.=c"><value name="img"><shadow type="screen_image_picker" id="B^p[_#*JPJQV{9UD*wL("><field name="img">img`
+. . . . . . . . . . . . . . . . . 
+. . . . . . . c c c . . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . c b b b c . . . . . . 
+. . . . . c c b f b c c . . . . . 
+. . . . . c c b 2 b c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c c b c c c . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"B^p[_#*JPJQV{9UD*wL("}}</data></shadow></value><value name="kind"><shadow type="spritekind" id=",^.WD:Z`WJkDLouT8ko1"><field name="MEMBER">turret</field></shadow></value></block></value><next><block type="game_control_sprite" id="12hv.M,zPP:L{=?9v{t{"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id="/V$*Nf^hx$rU%ywI+bW="><field name="VAR" id="$GKT_nLMb0M(I7uh3bzy">turretUp</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="G.;MW[zLO@YpmCB/H2^F"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="Q,86]!ZusNdTVrW:1Spr"><field name="speed">100</field></shadow></value><next><block type="controls_if" id=".kyAC@Ic/5SghHGM.Rh*"><value name="IF0"><shadow type="logic_boolean" id="N$!]yZfU7a833,lqDciE"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="G{E2mmEGhma*USX=9O^d"><field name="button">controller.A</field></block></value><statement name="DO0"><block type="variables_set" id="xa.M8kw*Xd1%n1SYSokV"><field name="VAR" id="g6~5+Fin4v`%W!o.%SA`">turretBulletUp</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite" id="AKUm`{!Pc;hx#q=pwj}N"><value name="img"><shadow type="screen_image_picker" id="gPhi~C}Sv3?DdJ6^`###"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"gPhi~C}Sv3?DdJ6^`###"}}</data></shadow></value><value name="sprite"><block type="variables_get" id="##euhExEVqI@zk}K(s`D"><field name="VAR" id="$GKT_nLMb0M(I7uh3bzy">turretUp</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="VknKgj`#BZA.W;{XEO-c"><field name="speed">0</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id=")T)bE/WdmDYLY;{`$:E3"><field name="speed">-50</field></shadow></value></block></value></block></statement></block></next></block></next></block></next></block></statement><next><block type="controls_if" id="XSE3vjf~wZN!cMav9-~{"><value name="IF0"><shadow type="logic_boolean" id="`9|trgtz$M4op/Bl3ob0"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="?8(r*tM[.^FXs=0^Kr+N"><field name="button">controller.left</field></block></value><statement name="DO0"><block type="sprites_destroy_all_sprites_of_kind" id="jeuyAIk]|xY12!(/KX8{"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.spray</field><value name="kind"><shadow type="spritekind" id="^H=8c8j(nXAb1h`x9kI#"><field name="MEMBER">turret</field></shadow></value><value name="duration"><shadow type="timePicker" id="lW|u5JF1f/DFaPIBOb:!"><field name="ms">500</field></shadow></value><next><block type="variables_set" id="VP+=PX8h*sB0mF#k`J~r"><field name="VAR" id="q9-~WCU1z-zOM!(/[@68">turretLeft</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="(^A7:{vvxM*HbFa~zX(f"><value name="img"><shadow type="screen_image_picker" id="-tdaD1m6802V8/d7I_5."><field name="img">img`
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . c c c c c c c . . . . . 
+. c b b b b b b b b c c . . . . . 
+. c b b b b f 2 b b b c . . . . . 
+. c b b b b b b b b c c . . . . . 
+. . . . . c c c c c c c . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"-tdaD1m6802V8/d7I_5."}}</data></shadow></value><value name="kind"><shadow type="spritekind" id=";!#x!aC2i$)`F1lOc|kQ"><field name="MEMBER">turret</field></shadow></value></block></value><next><block type="game_control_sprite" id="J(UQ||!?ab^|1YZ^jc0b"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id="9RdSPOZlj[fM=WQJ/@AF"><field name="VAR" id="q9-~WCU1z-zOM!(/[@68">turretLeft</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="RX)afSbbNr5/2U@oGg1b"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="+:T6V$;;cz=p6+a6_rCS"><field name="speed">100</field></shadow></value><next><block type="controls_if" id="/U6VTnSnRE#U@rGYvD:9"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="IoZO7,`Cuq;z;m=;P%Om"><field name="button">controller.A</field></block></value><statement name="DO0"><block type="variables_set" id=":]]RVuJz,lO,DISJSIFm"><field name="VAR" id="Y?BupoLKULyX%nmoF6ro">turretBulletLeft</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite" id="IbZFaTXH4uU*KJupuu7F"><value name="img"><shadow type="screen_image_picker" id="P4~L0SMNBI6sW/Ttn_fd"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"P4~L0SMNBI6sW/Ttn_fd"}}</data></shadow></value><value name="sprite"><block type="variables_get" id="jxMDP|6*B9Uo7VW4PKb["><field name="VAR" id="q9-~WCU1z-zOM!(/[@68">turretLeft</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="RCI9!PpuWg@IqS}7##d|"><field name="speed">-50</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="Q~|bXmb[jX*^8GA{1z+H"><field name="speed">0</field></shadow></value></block></value></block></statement></block></next></block></next></block></next></block></statement><next><block type="controls_if" id="`]0G06[H,#iSX;e((Zl*"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="oo9;dB97]E|+pFo~PT%1"><field name="button">controller.right</field></block></value><statement name="DO0"><block type="sprites_destroy_all_sprites_of_kind" id="+lD-zww[phc}I%]dk/!k"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.spray</field><value name="kind"><shadow type="spritekind" id="FrLU,~kI/l8?3=Fe1%mI"><field name="MEMBER">turret</field></shadow></value><value name="duration"><shadow type="timePicker" id="ECb:+}c*eT(.LZ(lwEWd"><field name="ms">500</field></shadow></value><next><block type="variables_set" id="cYZS=A;;Lx~).c6iZ~2J"><field name="VAR" id="*nD~z6$;q4.AvyZG0S2a">turretRight</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="{+K)a[@hb/.N=Z?@X9PA"><value name="img"><shadow type="screen_image_picker" id="YFUM4T$6{Xf~H?qZ]Z:F"><field name="img">img`
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . c c c c c c c . . . . . 
+. . . . . c c b b b b b b b b c . 
+. . . . . c b b b 2 f b b b b c . 
+. . . . . c c b b b b b b b b c . 
+. . . . . c c c c c c c . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"YFUM4T$6{Xf~H?qZ]Z:F"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="vs4?}Am{?{#30BktAW)/"><field name="MEMBER">turret</field></shadow></value></block></value><next><block type="game_control_sprite" id="|:ZH(|qeT@~W2EizTBjj"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id=".SfVU=0K9C#ZB%OGFu:J"><field name="VAR" id="*nD~z6$;q4.AvyZG0S2a">turretRight</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="UI,S;@_Lm(gNjdI54{h-"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="un}(USma{b7B=Y:a*l)y"><field name="speed">100</field></shadow></value><next><block type="controls_if" id="OfPh$z)RWM4pXfngvAzs"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id=",GbSa=WnKZprIiEN+)jX"><field name="button">controller.A</field></block></value><statement name="DO0"><block type="variables_set" id="X6}pd1kVa27|VSQ8aTl}"><field name="VAR" id="S0HmVo9(5;1dVL8hA^r_">turretBulletRight</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite" id="}Km:kk~65Jwb,uT3X/6U"><value name="img"><shadow type="screen_image_picker" id="T,Lat6gYdzPLn|V+t2]/"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"T,Lat6gYdzPLn|V+t2]/"}}</data></shadow></value><value name="sprite"><block type="variables_get" id="EkJo+HEoF|*PQAl{Ew?{"><field name="VAR" id="*nD~z6$;q4.AvyZG0S2a">turretRight</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="N~n:M+R9n$u.`BL`t//T"><field name="speed">50</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="E$x;Bi}2]e,S{09}0|4-"><field name="speed">0</field></shadow></value></block></value></block></statement></block></next></block></next></block></next></block></statement><next><block type="controls_if" id="*nh.rNYzg0S~D@+qE[aF"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id="ESo$K0_N*PiHfXFJ{,?U"><field name="button">controller.down</field></block></value><statement name="DO0"><block type="sprites_destroy_all_sprites_of_kind" id=")s)ra2/cei+Cr;f8tHdt"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><field name="effect">effects.spray</field><value name="kind"><shadow type="spritekind" id="I}}A)t.pY0xM-[k9Ddx9"><field name="MEMBER">turret</field></shadow></value><value name="duration"><shadow type="timePicker" id="zm00tw#%K/F;jLuNuwEM"><field name="ms">500</field></shadow></value><next><block type="variables_set" id="y^27s@tDoUZTCKnC^rFF"><field name="VAR" id=".]/Y7!jgH|XDIa:E*(lC">turretDown</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="y=wD4|Ps842@R*Fm.F4#"><value name="img"><shadow type="screen_image_picker" id="X5^~H1%+2o|qI!LGR4Xi"><field name="img">img`
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . c c c b c c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c b 2 b c c . . . . . 
+. . . . . c c b f b c c . . . . . 
+. . . . . . c b b b c . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . . b b b . . . . . . . 
+. . . . . . . c c c . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"X5^~H1%+2o|qI!LGR4Xi"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="B{/c)94?O*.qXe;Mbi={"><field name="MEMBER">turret</field></shadow></value></block></value><next><block type="game_control_sprite" id="UVOBD-;syfsbG9+dUZ2Q"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="true"></mutation><value name="sprite"><block type="variables_get" id="3#a+GV`^/iD]i9C7Fo^h"><field name="VAR" id=".]/Y7!jgH|XDIa:E*(lC">turretDown</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="mIP?n5;Xzb5Hu6A.hrLe"><field name="speed">100</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="_?GFFpPG:=%$UoLY;b0#"><field name="speed">100</field></shadow></value><next><block type="controls_if" id="N/Xo[Muc|`ZeL3U+5j6P"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed" id=":t%v6(5(2969h4#oBfP!"><field name="button">controller.A</field></block></value><statement name="DO0"><block type="variables_set" id="wt$C7!7(xyZzgqBF@8I*"><field name="VAR" id="NxP_3!$XiNCCE2,;-!i2">turretBulletDown</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite" id="ecd$d)=TO%,hHpy0q*fh"><value name="img"><shadow type="screen_image_picker" id="^w*atx[4r1CYNGj,r(KV"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . f f f f . . . . . . 
+. . . . . . . f f . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"^w*atx[4r1CYNGj,r(KV"}}</data></shadow></value><value name="sprite"><block type="variables_get" id="KT*q~EUu$yVR%.YF_Fnl"><field name="VAR" id=".]/Y7!jgH|XDIa:E*(lC">turretDown</field></block></value><value name="vx"><shadow type="spriteSpeedPicker" id="O$?`uW8T2Zi%{V[ld]%:"><field name="speed">0</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker" id="SaMl`I,7))g.;Li_E6$d"><field name="speed">50</field></shadow></value></block></value></block></statement></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></statement></block><block type="gameupdate" id="q.TLv?~{;U#6YawhWQGf" x="710" y="-190"><statement name="HANDLER"><block type="function_call" id="!;/Y}ggfU%Y0n7S@$Q19"><mutation name="turretDirection" functionid="/KSQ5VuJ!ge~=fjEB{:1"></mutation></block></statement></block><block type="pxt-on-start" id="v^`FX!Z.l!t-{I_XPdE)" x="50" y="-70"><statement name="HANDLER"><block type="variables_set" id="`~;}z@=uzd|qC5z}IO=@"><field name="VAR" id="_.YV:VRH1dl_j|*x.*r7">mySprite</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="GU/,=oTSGMDrz0t,H~G+"><value name="img"><shadow type="screen_image_picker" id="j9l7YfvYcvtJ/u_bI_!/"><field name="img">img`
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . c c c 2 c c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c b f b c c . . . . . 
+. . . . . c c b b b c c . . . . . 
+. . . . . c c c c c c c . . . . . 
+. . . . . . c c c c c . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"j9l7YfvYcvtJ/u_bI_!/"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="k!/!;e%L=iJc6%7EAdzH"><field name="MEMBER">turret</field></shadow></value></block></value><next><block type="gamesetbackgroundimage" id="AvU7r+%QIWMF_4_/]@`q"><value name="img"><shadow type="background_image_picker" id="?kqWqOk~6-l{;vA6mj#R"><field name="img">img`
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbcccccccccccccccbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbbbcccccccccccccccbbbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
+`</field><data>{"commentRefs":[],"fieldData":{"img":"?kqWqOk~6-l{;vA6mj#R"}}</data></shadow></value></block></next></block></statement></block></xml>
