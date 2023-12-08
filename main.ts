@@ -175,6 +175,82 @@ function turretDirection () {
         }
     }
 }
+function setEnemies () {
+    for (let index = 0; index < 4; index++) {
+        Monster = sprites.createProjectileFromSide(img`
+            . . . 7 7 7 7 7 . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . . . 7 . . . . . 
+            . . . 7 8 8 8 7 . . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . . . . 8 . . . . . 
+            . . . . . 8 . . . . . 
+            . . . . . 6 . . . . . 
+            . . . . 6 . 6 . . . . 
+            . . . 6 . . . 6 . . . 
+            . . 6 . . . . . 6 . . 
+            . . 7 . . . . . 7 . . 
+            7 7 7 . . . . . 7 7 7 
+            `, 0, 20)
+        Monster.setPosition(80, -10)
+        Monster2 = sprites.createProjectileFromSide(img`
+            . . . 7 7 7 7 7 . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . . . 7 . . . . . 
+            . . . 7 8 8 8 7 . . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . . . . 8 . . . . . 
+            . . . . . 8 . . . . . 
+            . . . . . 6 . . . . . 
+            . . . . 6 . 6 . . . . 
+            . . . 6 . . . 6 . . . 
+            . . 6 . . . . . 6 . . 
+            . . 7 . . . . . 7 . . 
+            7 7 7 . . . . . 7 7 7 
+            `, -20, 0)
+        Monster2.setPosition(160, 60)
+        Monster3 = sprites.createProjectileFromSide(img`
+            . . . 7 7 7 7 7 . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . f f 7 f f . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . 7 7 7 7 7 . . . 
+            . . . . . 7 . . . . . 
+            . . . 7 8 8 8 7 . . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . 7 . . 8 . . 7 . . 
+            . . . . . 8 . . . . . 
+            . . . . . 8 . . . . . 
+            . . . . . 6 . . . . . 
+            . . . . 6 . 6 . . . . 
+            . . . 6 . . . 6 . . . 
+            . . 6 . . . . . 6 . . 
+            . . 7 . . . . . 7 . . 
+            7 7 7 . . . . . 7 7 7 
+            `, 0, -20)
+        Monster3.setPosition(80, 130)
+    }
+}
+let Monster3: Sprite = null
+let Monster2: Sprite = null
+let Monster: Sprite = null
 let turretBulletDown: Sprite = null
 let turretDown: Sprite = null
 let turretBulletRight: Sprite = null
@@ -324,6 +400,7 @@ scene.setBackgroundImage(img`
     77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
     77777777777777777777777777777777777777777777777777777777777777777777fbbbcccccccccccccccbbbf777777777777777777777777777777777777777777777777777777777777777777777
     `)
+setEnemies()
 game.onUpdate(function () {
     turretDirection()
 })
